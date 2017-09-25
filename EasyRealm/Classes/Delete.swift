@@ -43,7 +43,7 @@ public extension EasyRealm where T:Object {
 fileprivate extension EasyRealm where T: Object {
   
   fileprivate func managedSimpleDelete() throws {
-    guard let rq = EasyRealmQueue() else { throw EasyRealmError.RealmQueueCantBeCreate }
+    guard let rq = EasyRealmQueue.shared else { throw EasyRealmError.RealmQueueCantBeCreate }
     let ref = ThreadSafeReference(to: self.base)
     try rq.queue.sync {
       guard let object = rq.realm.resolve(ref) else { throw EasyRealmError.ObjectCantBeResolved }
